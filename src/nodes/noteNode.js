@@ -1,25 +1,24 @@
-// inputNode.js — refactored with BaseNode abstraction
-
+// noteNode.js — a sticky-note style annotation node (no handles)
 import { useState } from "react";
 import { BaseNode } from "./BaseNode";
 
-export const InputNode = ({ id, data }) => {
-  const [currName, setCurrName] = useState(
-    data?.inputName || id.replace("customInput-", "input_"),
-  );
-  const [inputType, setInputType] = useState(data?.inputType || "Text");
+export const NoteNode = ({ id, data }) => {
+  const [note, setNote] = useState(data?.note || "Add a note...");
 
   return (
     <BaseNode
       id={id}
-      title="Input"
-      icon="📥"
-      headerColor="linear-gradient(135deg, #3b82f6, #06b6d4)"
+      title="Note"
+      icon="🗒️"
+      headerColor="linear-gradient(135deg, #fbbf24, #f59e0b)"
       inputs={[]}
-      outputs={[{ id: "value", label: "out" }]}
+      outputs={[]}
+      minWidth={200}
     >
       <div className="node-field flex flex-col gap-y-1">
-        <label className="node-label text-xl font-semibold text-gray-300">Name</label>
+        <label className="node-label text-xl font-semibold text-gray-300">
+          Name
+        </label>
         <input
           className="node-input text-gray-300 bg-transparent border border-gray-600 rounded px-2 py-1 text-sm w-full"
           type="text"
@@ -27,7 +26,7 @@ export const InputNode = ({ id, data }) => {
           onChange={(e) => setCurrName(e.target.value)}
         />
       </div>
-      <div className="node-field flex gap-x-3 mt-4 items-center">
+       <div className="node-field flex gap-x-3 mt-4 items-center">
         <label className="node-label text-lg text-gray-300">Type</label>
         <select
           className="node-select bg-transparent text-gray-300 border border-gray-600 rounded px-2 py-1 text-sm"

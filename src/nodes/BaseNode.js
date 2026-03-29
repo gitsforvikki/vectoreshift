@@ -18,7 +18,7 @@ export const BaseNode = ({
 }) => {
   return (
     <div
-      className="base-node"
+      className="base-node p-5 border border-gray-600 rounded-lg"
       style={{
         minWidth,
         minHeight,
@@ -26,9 +26,9 @@ export const BaseNode = ({
       }}
     >
       {/* Header */}
-      <div className="base-node-header" style={{ background: headerColor }}>
+      <div className="base-node-header px-2 py-1 rounded-lg" style={{ background: headerColor }}>
         <span className="base-node-icon">{icon}</span>
-        <span className="base-node-title">{title}</span>
+        <span className="base-node-title text-capitalize">{title}</span>
       </div>
 
       {/* Body */}
