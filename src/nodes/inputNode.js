@@ -1,5 +1,3 @@
-// inputNode.js — refactored with BaseNode abstraction
-
 import { useState } from "react";
 import { BaseNode } from "./BaseNode";
 
@@ -19,14 +17,26 @@ export const InputNode = ({ id, data }) => {
       outputs={[{ id: "value", label: "out" }]}
     >
       <div className="node-field flex flex-col gap-y-1">
-        <label className="node-label text-xl font-semibold text-gray-300">Name</label>
-        <input
-          className="node-input text-gray-300 bg-transparent border border-gray-600 rounded px-2 py-1 text-sm w-full"
-          type="text"
-          value={currName}
-          onChange={(e) => setCurrName(e.target.value)}
-        />
+        <label className="node-label text-xl font-semibold text-gray-300">
+          Name
+        </label>
+
+        {inputType === "Text" ? (
+          <input
+            className="node-input text-gray-300 bg-transparent border border-gray-600 rounded px-2 py-1 text-sm w-full"
+            type="text"
+            value={currName}
+            onChange={(e) => setCurrName(e.target.value)}
+          />
+        ) : (
+          <input
+            className="node-input text-gray-300 bg-transparent border border-gray-600 rounded px-2 py-1 text-sm w-full file:text-sm file:text-white file:bg-gray-700 file:border-0 file:px-3 file:py-1 file:rounded"
+            type="file"
+            onChange={(e) => console.log(e.target.files[0])}
+          />
+        )}
       </div>
+
       <div className="node-field flex gap-x-3 mt-4 items-center">
         <label className="node-label text-lg text-gray-300">Type</label>
         <select
@@ -34,8 +44,12 @@ export const InputNode = ({ id, data }) => {
           value={inputType}
           onChange={(e) => setInputType(e.target.value)}
         >
-          <option value="Text bg-transparent">Text</option>
-          <option value="File">File</option>
+          <option value="Text" className="text-white bg-gray-600">
+            Text
+          </option>
+          <option value="File" className="bg-gray-600 text-white">
+            File
+          </option>
         </select>
       </div>
     </BaseNode>

@@ -42,16 +42,18 @@ export const TextNode = ({ id, data }) => {
         title="Text"
         icon="📝"
         headerColor="linear-gradient(135deg, #10b981, #14b8a6)"
-        inputs={[]} // dynamic handles added below, not through BaseNode
-        outputs={[{ id: "output", label: "out" }]}
+        inputs={[]}
+        outputs={[]}
         minWidth={nodeSize.width}
         minHeight={nodeSize.height}
       >
-        <div className="node-field">
-          <label className="node-label">Content</label>
+        <div className="node-field mt-3">
+          <label className="node-label text-gray-300 font-semibold text-xl mb-2">
+            Content
+          </label>
           <textarea
             ref={textareaRef}
-            className="node-textarea"
+            className="node-textarea bg-transparent text-gray-300 border border-gray-600 rounded px-2 py-1 text-sm w-full"
             value={currText}
             onChange={(e) => setCurrText(e.target.value)}
             placeholder="Type text... use {{variableName}} to add inputs"
@@ -64,8 +66,8 @@ export const TextNode = ({ id, data }) => {
         {variables.length > 0 && (
           <div className="variable-chips">
             {variables.map((v) => (
-              <span key={v} className="variable-chip">
-                {`{{${v}}}`}
+              <span key={v} className="variable-chip text-gray-300 italic">
+                {v}{" "}
               </span>
             ))}
           </div>
@@ -89,17 +91,19 @@ export const TextNode = ({ id, data }) => {
               position: "absolute",
             }}
           />
+
           <div
             className="handle-label handle-label-left"
             style={{
               top: `calc(${((idx + 1) / (variables.length + 1)) * 100}% - 8px)`,
-              left: 8,
+              right: "calc(100% + 8px)",
               position: "absolute",
-              fontSize: "9px",
+              fontSize: "12px",
               color: "#f59e0b",
               fontWeight: 600,
               pointerEvents: "none",
               whiteSpace: "nowrap",
+              textAlign: "right",
             }}
           >
             {varName}

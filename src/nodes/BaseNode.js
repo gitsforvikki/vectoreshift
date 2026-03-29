@@ -54,7 +54,7 @@ export const BaseNode = ({
           />
           {handle.label && (
             <div
-              className="handle-label handle-label-left"
+              className="handle-label handle-label-left text-gray-300"
               style={{
                 top: inputs.length === 1
                   ? 'calc(50% - 8px)'
@@ -87,7 +87,7 @@ export const BaseNode = ({
           />
           {handle.label && (
             <div
-              className="handle-label handle-label-right"
+              className="handle-label handle-label-right text-gray-300"
               style={{
                 top: outputs.length === 1
                   ? 'calc(50% - 8px)'
