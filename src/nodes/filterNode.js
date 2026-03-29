@@ -1,4 +1,3 @@
-// filterNode.js — filters data based on a condition
 import { useState } from "react";
 import { BaseNode } from "./BaseNode";
 
@@ -18,20 +17,25 @@ export const FilterNode = ({ id, data }) => {
         { id: "no-match", label: "no match" },
       ]}
     >
-      <div className="node-field">
-        <label className="node-label">Field</label>
+      <div className="node-field flex flex-col gap-y-1">
+        <label className="node-label text-lg font-semibold text-gray-300">
+          Field
+        </label>
         <input
-          className="node-input"
+          className="node-input text-gray-300 bg-transparent border border-gray-600 rounded px-2 py-1 text-sm w-full"
           type="text"
           value={field}
           onChange={(e) => setField(e.target.value)}
           placeholder="e.g. status"
         />
       </div>
-      <div className="node-field">
-        <label className="node-label">Condition</label>
+
+      <div className="node-field flex flex-col gap-y-1 mt-4">
+        <label className="node-label text-lg font-semibold text-gray-300">
+          Condition
+        </label>
         <input
-          className="node-input"
+          className="node-input text-gray-300 bg-transparent border border-gray-600 rounded px-2 py-1 text-sm w-full"
           type="text"
           value={condition}
           onChange={(e) => setCondition(e.target.value)}

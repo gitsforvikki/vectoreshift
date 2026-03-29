@@ -4,7 +4,8 @@ import { BaseNode } from "./BaseNode";
 
 export const NoteNode = ({ id, data }) => {
   const [note, setNote] = useState(data?.note || "Add a note...");
-
+  const [currName, setCurrName] = useState(data?.currName || "");
+  const [inputType, setInputType] = useState(data?.inputType || "Text");
   return (
     <BaseNode
       id={id}
@@ -26,15 +27,19 @@ export const NoteNode = ({ id, data }) => {
           onChange={(e) => setCurrName(e.target.value)}
         />
       </div>
-       <div className="node-field flex gap-x-3 mt-4 items-center">
+      <div className="node-field flex gap-x-3 mt-4 items-center">
         <label className="node-label text-lg text-gray-300">Type</label>
         <select
           className="node-select bg-transparent text-gray-300 border border-gray-600 rounded px-2 py-1 text-sm"
           value={inputType}
           onChange={(e) => setInputType(e.target.value)}
         >
-          <option value="Text bg-transparent">Text</option>
-          <option value="File">File</option>
+          <option value="Text" className="bg-gray-600 text-white">
+            Text
+          </option>
+          <option value="File" className="bg-gray-600 text-white">
+            File
+          </option>
         </select>
       </div>
     </BaseNode>

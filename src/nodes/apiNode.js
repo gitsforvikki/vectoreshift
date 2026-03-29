@@ -1,4 +1,3 @@
-// apiNode.js — calls an external API endpoint
 import { useState } from "react";
 import { BaseNode } from "./BaseNode";
 
@@ -21,23 +20,28 @@ export const APINode = ({ id, data }) => {
         { id: "error", label: "error" },
       ]}
     >
-      <div className="node-field">
-        <label className="node-label">Method</label>
+      <div className="node-field flex flex-col gap-y-1">
+        <label className="node-label text-lg font-semibold text-gray-300">
+          Method
+        </label>
         <select
-          className="node-select"
+          className="node-select bg-transparent text-gray-300 border border-gray-600 rounded px-2 py-1 text-sm w-full"
           value={method}
           onChange={(e) => setMethod(e.target.value)}
         >
-          <option value="GET">GET</option>
-          <option value="POST">POST</option>
-          <option value="PUT">PUT</option>
-          <option value="DELETE">DELETE</option>
+          <option value="GET" className="bg-gray-700 text-white">GET</option>
+          <option value="POST" className="bg-gray-700 text-white">POST</option>
+          <option value="PUT" className="bg-gray-700 text-white">PUT</option>
+          <option value="DELETE" className="bg-gray-700 text-white">DELETE</option>
         </select>
       </div>
-      <div className="node-field">
-        <label className="node-label">URL</label>
+
+      <div className="node-field flex flex-col gap-y-1 mt-4">
+        <label className="node-label text-lg font-semibold text-gray-300">
+          URL
+        </label>
         <input
-          className="node-input"
+          className="node-input text-gray-300 bg-transparent border border-gray-600 rounded px-2 py-1 text-sm w-full"
           type="text"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
